@@ -105,12 +105,25 @@
 
 <main>
   <section id="scritti">
-    <h2>Ultimi scritti</h2>
-    <article>
-      <h3>Le prime righe devono ancora arrivare.</h3>
-      <p>Il blog è pronto ad accogliere i suoi primi pensieri.</p>
-    </article>
-  </section>
+<h2>Ultimi scritti</h2>
+<!-- scriptorium:articles -->
+<style>.paper-bookmark{display:inline-flex;align-items:center;justify-content:center;width:44px;min-height:44px;vertical-align:middle;text-decoration:none;flex-shrink:0;margin-right:6px}.paper-bookmark::before{content:"";display:block;width:12px;height:27px;background:var(--bookmark);clip-path:polygon(0 0,100% 0,100% 100%,50% 78%,0 100%);border-radius:1px 1px 0 0}.paper-bookmark:focus-visible,.category-filters a:focus-visible{outline:2px solid var(--ink);outline-offset:2px}.category-filters{display:flex;flex-wrap:wrap;gap:6px 14px;margin:-12px 0 20px;font:13px Arial,sans-serif}.category-filters a{display:inline-flex;align-items:center;min-height:44px;color:var(--ink);text-decoration:none;border-bottom:1px solid transparent}.category-filters a[aria-current="true"]{border-color:var(--accent);font-weight:bold}.category-filters .paper-bookmark{margin-right:0;width:26px}.category-empty{font-style:italic;color:#77716d}#scritti article[hidden],.category-empty[hidden]{display:none!important}</style>
+<nav class="category-filters" aria-label="Categorie degli scritti"><a href="/#scritti" data-filter="" aria-current="true">Tutti gli scritti</a><a href="/?categoria=serie#scritti" data-filter="serie"><span class="paper-bookmark" style="--bookmark:#527b59" aria-hidden="true"></span>Cose serie</a><a href="/?categoria=semiserie#scritti" data-filter="semiserie"><span class="paper-bookmark" style="--bookmark:#b66d29" aria-hidden="true"></span>Cose semiserie</a><a href="/?categoria=poco-serie#scritti" data-filter="poco-serie"><span class="paper-bookmark" style="--bookmark:#ae4545" aria-hidden="true"></span>Cose poco serie</a></nav>
+<article><h3>Le prime righe devono ancora arrivare.</h3><p>Il blog è pronto ad accogliere i suoi primi pensieri.</p></article>
+<p class="category-empty" role="status" aria-live="polite" hidden>Nessuno scritto in questa categoria, per ora.</p>
+<script>
+(()=>{'use strict';const root=document.getElementById('scritti');if(!root)return;
+const names=['serie','semiserie','poco-serie'];
+function apply(){const value=new URL(location.href).searchParams.get('categoria');const active=names.includes(value)?value:'';let count=0;
+root.querySelectorAll('article[data-category]').forEach(item=>{item.hidden=!!active&&item.dataset.category!==active;if(!item.hidden)count++;});
+root.querySelectorAll('[data-filter]').forEach(link=>link.setAttribute('aria-current',String(link.dataset.filter===active)));
+const empty=root.querySelector('.category-empty');if(empty)empty.hidden=!active||count>0;
+root.querySelectorAll('article:not([data-category])').forEach(item=>{item.hidden=!!active;});}
+root.addEventListener('click',event=>{const link=event.target.closest('a[data-filter],a.paper-bookmark');if(!link||event.button!==0||event.metaKey||event.ctrlKey||event.shiftKey||event.altKey)return;event.preventDefault();history.pushState(null,'',link.href);apply();});
+window.addEventListener('popstate',apply);apply();})();
+</script>
+<!-- /scriptorium:articles -->
+</section>
 
   <section id="chi-sono" style="margin-top:75px">
     <h2><a href="chi-sono.html" style="color:inherit;text-decoration:none">Chi sono</a></h2>
