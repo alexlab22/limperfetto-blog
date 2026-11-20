@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Chi sono: un pediatra italiano, molti dubbi, nessuna certezza e qualche passione. About me, in italiano e in inglese.">
+  <title>Chi sono — L'imperfetto</title>
+  <style>
+
+    :root {
+      --ink: #24211f;
+      --accent: #86172b;
+      --paper: #faf9f7;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: Georgia, serif;
+    }
+    header {
+      padding: 22px 6%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+    .logo {
+      font-size: 25px;
+      font-weight: bold;
+      text-decoration: none;
+      color: var(--ink);
+    }
+    .logo span { color: var(--accent); }
+    nav { display: flex; gap: 25px; }
+    nav a {
+      color: var(--ink);
+      text-decoration: none;
+      font: 13px Arial, sans-serif;
+      letter-spacing: 1.5px;
+    }
+    .hero img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+    main {
+      max-width: 1050px;
+      margin: 65px auto;
+      padding: 0 6%;
+    }
+    h2 {
+      color: var(--accent);
+      font-size: 18px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 35px;
+    }
+    article {
+      border-bottom: 1px solid #d6d1cc;
+      padding: 24px 0;
+    }
+    article h3 {
+      font-size: clamp(23px, 3vw, 32px);
+      font-weight: normal;
+      margin: 0 0 10px;
+    }
+    article p {
+      color: #77716d;
+      margin: 0;
+    }
+    footer {
+      border-top: 1px solid #d6d1cc;
+      padding: 30px 6%;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      color: #666;
+    }
+    @media (max-width: 600px) {
+      header { padding: 18px 5%; }
+      .logo { font-size: 21px; }
+      nav { gap: 13px; }
+      nav a { font-size: 11px; }
+      main { margin: 35px auto; }
+      footer { flex-direction: column; }
+    }
+  
+    /* Lo stile riprende la homepage; queste regole riguardano solo la biografia. */
+    main { max-width: 900px; }
+    h1 { font-size: clamp(32px, 5vw, 46px); font-weight: normal; margin: 0 0 48px; }
+    .bio h2 { margin: 0 0 24px; font-size: 14px; }
+    .bio p { font-size: 19px; line-height: 1.85; margin: 0 0 22px; }
+    .bio + .bio { margin-top: 48px; padding-top: 40px; border-top: 1px solid #d6d1cc; }
+    .closing-quote { margin: 48px 0 0; padding: 8px 0 8px 24px; border-left: 3px solid var(--accent); }
+    .closing-quote p { font-size: 20px; line-height: 1.7; margin: 0 0 12px; }
+    .closing-quote cite { color: #77716d; font-size: 15px; font-style: normal; }
+    nav a[aria-current="page"] { color: var(--accent); }
+    a:focus-visible { outline: 2px solid var(--accent); outline-offset: 5px; }
+    @media (max-width: 600px) {
+      h1 { margin-bottom: 36px; }
+      .bio p { font-size: 18px; }
+      .closing-quote { padding-left: 18px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a class="logo" href="index.html">L'imperfetto<span>.</span></a>
+  <nav aria-label="Menu principale">
+    <a href="index.html#scritti">SCRITTI</a>
+    <a href="chi-sono.html" aria-current="page">CHI SONO</a>
+  </nav>
+</header>
+
+<main>
+  <h1>Chi sono</h1>
+
+  <!-- TESTO ITALIANO: per aggiornare la biografia, modifica i paragrafi di questa sezione. -->
+  <section class="bio" lang="it" aria-labelledby="italiano">
+    <h2 id="italiano">Italiano</h2>
+    <p>Sono un pediatra italiano da oltre 20 anni interessato alle malattie infettive vaccino-prevenibili.<br>
+    Amante della fotografia, dipendente dalla tecnologia, perso in  lande deserte con la mia bike. Incallito lettore di libri. Ah ... pessimo chitarrista (per tacer sull’altra mezza dozzina di passioni)</p>
+    <p>PS: Cerco di non prendermi troppo sul serio, perché il sorriso e l'umorismo migliorano la salute! Spesso (auto)ironico,  a volte scherzo (troppo! ..anche qui.. non vi arrabbiate!).</p>
+  </section>
+
+  <!-- ENGLISH TEXT: edit the paragraphs in this section to update the English biography. -->
+  <section class="bio" lang="en" aria-labelledby="english">
+    <h2 id="english">English</h2>
+    <p>I’m an Italian pediatrician for over 20 years interested in infectious and vaccine preventable diseases.<br>
+    Photography lover,  technology  addicted, lost in wilderness with my bike. Inveterate books  reader. One more thing: bad guitar  player  (keeping silent about the other half-dozen passions)</p>
+    <p>PS: I try not to take myself too seriously, because smile and humor improve health! Often (auto)ironic and sometimes kidding (here too...don' t get angry... ).</p>
+  </section>
+
+  <!-- CITAZIONE FINALE: testo e attribuzione forniti dall’autore. -->
+  <blockquote class="closing-quote" lang="en">
+    <p><em>“Sometimes it is better to remain silent and appear stupid than open your mouth and remove all doubt “</em></p>
+    <cite>( O.Wilde )</cite>
+  </blockquote>
+</main>
+
+<footer>
+  <span>© L'imperfetto</span>
+  <em>Fatto con qualche imperfezione.</em>
+</footer>
+
+</body>
+</html>
