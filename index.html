@@ -1,0 +1,128 @@
+
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="L'imperfetto. Cose serie, poco serie, semiserie. Molti dubbi, nessuna certezza.">
+  <title>L'imperfetto — Cose serie, poco serie, semiserie</title>
+  <style>
+    :root {
+      --ink: #24211f;
+      --accent: #86172b;
+      --paper: #faf9f7;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: Georgia, serif;
+    }
+    header {
+      padding: 22px 6%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+    .logo {
+      font-size: 25px;
+      font-weight: bold;
+      text-decoration: none;
+      color: var(--ink);
+    }
+    .logo span { color: var(--accent); }
+    nav { display: flex; gap: 25px; }
+    nav a {
+      color: var(--ink);
+      text-decoration: none;
+      font: 13px Arial, sans-serif;
+      letter-spacing: 1.5px;
+    }
+    .hero img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+    main {
+      max-width: 1050px;
+      margin: 65px auto;
+      padding: 0 6%;
+    }
+    h2 {
+      color: var(--accent);
+      font-size: 18px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 35px;
+    }
+    article {
+      border-bottom: 1px solid #d6d1cc;
+      padding: 24px 0;
+    }
+    article h3 {
+      font-size: clamp(23px, 3vw, 32px);
+      font-weight: normal;
+      margin: 0 0 10px;
+    }
+    article p {
+      color: #77716d;
+      margin: 0;
+    }
+    footer {
+      border-top: 1px solid #d6d1cc;
+      padding: 30px 6%;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      color: #666;
+    }
+    @media (max-width: 600px) {
+      header { padding: 18px 5%; }
+      .logo { font-size: 21px; }
+      nav { gap: 13px; }
+      nav a { font-size: 11px; }
+      main { margin: 35px auto; }
+      footer { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a class="logo" href="index.html">L'imperfetto<span>.</span></a>
+  <nav>
+    <a href="#scritti">SCRITTI</a>
+    <a href="#chi-sono">CHI SONO</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <img src="Copertina-imperfetto.png"
+       alt="L'imperfetto: molti dubbi, nessuna certezza. Chitarra e libri illuminati dal sole.">
+</section>
+
+<main>
+  <section id="scritti">
+    <h2>Ultimi scritti</h2>
+    <article>
+      <h3>Le prime righe devono ancora arrivare.</h3>
+      <p>Il blog è pronto ad accogliere i suoi primi pensieri.</p>
+    </article>
+  </section>
+
+  <section id="chi-sono" style="margin-top:75px">
+    <h2>Chi sono</h2>
+    <p>Una persona con molti dubbi, nessuna certezza
+       e qualche pensiero da mettere per iscritto.</p>
+  </section>
+</main>
+
+<footer>
+  <span>© L'imperfetto</span>
+  <em>Fatto con qualche imperfezione.</em>
+</footer>
+
+</body>
+</html>
