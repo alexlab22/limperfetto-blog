@@ -10,8 +10,19 @@
       "thumbnail" : "foto\/immagini\/c1271f7c-b168-4e12-83a4-9893abb66c07\/920588929377844e826303919427e75092fed3f2f05967dae9dd4e4b5ebf95d6-mini.jpg",
       "title" : "Riflessi",
       "width" : 1875
+    },
+    {
+      "alt" : "Una finestra sul mare",
+      "caption" : "",
+      "height" : 2400,
+      "id" : "91814D82-073A-4888-AC86-12BAED008DE0",
+      "image" : "foto\/immagini\/91814d82-073a-4888-ac86-12baed008de0\/d65e3c2f8aac40e5936cf880dcda491cadd06c1c147b8007ca791beba589dd79.jpg",
+      "revision" : "3234250D-683F-4B3D-92DB-203565DCFABC",
+      "thumbnail" : "foto\/immagini\/91814d82-073a-4888-ac86-12baed008de0\/f305f4a8892101eb99e49395c75eb5839155bc934aaa377e84f8b1b9d62e5fdd-mini.jpg",
+      "title" : "Finestra sul mare",
+      "width" : 1800
     }
   ],
-  "revision" : "52E2C216-A9E7-4755-A304-D1AC2DCB295D",
+  "revision" : "8F516DE0-6F25-44C1-ABE3-F0EE07079EA4",
   "version" : 1
 }
