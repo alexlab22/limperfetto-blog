@@ -12,7 +12,44 @@
 <dialog aria-label="Fotografia ingrandita" aria-describedby="caption"><div class="viewer"><div class="tools"><span id="position" aria-live="polite"></span><div><button id="prev" aria-label="Fotografia precedente">← Precedente</button> <button id="next" aria-label="Fotografia successiva">Successiva →</button><button class="close" id="close">Chiudi ×</button></div></div><img class="large" id="large" alt=""><div class="caption" id="caption" aria-live="polite"><strong id="title"></strong><p id="description"></p></div></div></dialog>
 <script>
 (()=>{const dialog=document.querySelector('dialog'),photos=[...document.querySelectorAll('figure')];let current=0,trigger;
-function show(index){current=(index+photos.length)%photos.length;const p=photos[current],img=p.querySelector('img');document.getElementById('large').src=img.dataset.full;document.getElementById('large').alt=img.alt;document.getElementById('title').textContent=(p.querySelector('strong')?.textContent || '');document.getElementById('description').textContent=p.querySelector('p').textContent;document.getElementById('position').textContent=(current+1)+' / '+photos.length;}
+function createPhotoTracker({endpoint,origin,location=globalThis.location,storage,fetcher=globalThis.fetch,now=()=>Date.now(),uuid=()=>crypto.randomUUID(),retry=fn=>setTimeout(fn,1500)}={}) {
+ try{storage ??= globalThis.sessionStorage}catch{}
+ const last=new Map(),UUID=/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+ let cancel=()=>{},activeID=null;
+ let valid=false;
+ try{const u=new URL(endpoint);valid=location.origin===origin && u.protocol==='https:' && u.hostname.endsWith('.workers.dev') && u.pathname==='/event' && !u.search && !u.hash && !u.username && !u.password}catch{}
+ async function send(body,again=true) {
+  try {
+   const response=await fetcher(endpoint,{method:'POST',headers:{'Content-Type':'text/plain;charset=UTF-8'},body,credentials:'omit',referrerPolicy:'no-referrer',keepalive:true});
+   if(!response.ok && response.status>=500 && again)retry(()=>send(body,false));
+  }catch{if(again)retry(()=>send(body,false))}
+ }
+ function record(id) {
+  if(!valid || !UUID.test(id))return false;
+  id=id.toLowerCase();const key='scriptorium.photo.open.'+id,time=now();let previous=last.get(id);
+  try{const saved=storage?.getItem(key);if(saved!==null && saved!==undefined && Number.isFinite(Number(saved)))previous=Math.max(previous??0,Number(saved))}catch{}
+  if(previous!==undefined && time-previous<5000 && time>=previous)return false;
+  last.set(id,time);try{storage?.setItem(key,String(time))}catch{}
+  void send(JSON.stringify({event_id:uuid(),photo_id:id}));return true;
+ }
+ return {
+  record,
+  display(id,image,isVisible,document=globalThis.document) {
+   if(activeID===id && isVisible())return;
+   activeID=id;cancel();let disposed=false;
+   const cleanup=()=>{disposed=true;image.removeEventListener('load',check);image.removeEventListener('error',cleanup);document.removeEventListener('visibilitychange',check)};
+   const check=()=>{if(!disposed && image.complete && image.naturalWidth>0 && document.visibilityState==='visible' && isVisible()){record(id);cleanup()}};
+   cancel=cleanup;image.addEventListener('load',check);image.addEventListener('error',cleanup);document.addEventListener('visibilitychange',check);
+   // The dialog is opened immediately after show(); check only once it is actually visible.
+   queueMicrotask(check);
+  },
+  close(){cancel();activeID=null}
+ };
+}
+
+const tracker=createPhotoTracker({endpoint:'https://limperfetto-foto-statistiche.alessandro200595.workers.dev/event',origin:'https://limperfetto-blog.pages.dev'});
+function show(index){current=(index+photos.length)%photos.length;const p=photos[current],img=p.querySelector('img');document.getElementById('large').src=img.dataset.full;document.getElementById('large').alt=img.alt;document.getElementById('title').textContent=(p.querySelector('strong')?.textContent || '');document.getElementById('description').textContent=p.querySelector('p').textContent;document.getElementById('position').textContent=(current+1)+' / '+photos.length;const shown=current;tracker.display(p.querySelector('[data-photo]').dataset.photo,document.getElementById('large'),()=>dialog.open && current===shown);}
 document.querySelectorAll('[data-photo]').forEach(b=>b.addEventListener('click',event=>{if(event.button!==0||event.metaKey||event.ctrlKey||event.shiftKey||event.altKey)return;event.preventDefault();trigger=b;show(photos.indexOf(b.closest('figure')));dialog.showModal();document.getElementById('close').focus()}));
-function close(){dialog.close();trigger?.focus()}document.getElementById('close').onclick=close;dialog.addEventListener('cancel',e=>{e.preventDefault();close()});document.getElementById('prev').onclick=()=>show(current-1);document.getElementById('next').onclick=()=>show(current+1);dialog.addEventListener('keydown',e=>{if(e.key==='ArrowLeft'){e.preventDefault();show(current-1)}if(e.key==='ArrowRight'){e.preventDefault();show(current+1)}});let touchX;dialog.addEventListener('touchstart',e=>{touchX=e.touches.length===1?e.touches[0].clientX:undefined},{passive:true});dialog.addEventListener('touchend',e=>{if(touchX!==undefined){const delta=e.changedTouches[0].clientX-touchX;if(Math.abs(delta)>70)show(current+(delta<0?1:-1));touchX=undefined}},{passive:true});})();
+function close(){tracker.close();dialog.close();trigger?.focus()}document.getElementById('close').onclick=close;dialog.addEventListener('cancel',e=>{e.preventDefault();close()});document.getElementById('prev').onclick=()=>show(current-1);document.getElementById('next').onclick=()=>show(current+1);dialog.addEventListener('keydown',e=>{if(e.key==='ArrowLeft'){e.preventDefault();show(current-1)}if(e.key==='ArrowRight'){e.preventDefault();show(current+1)}});let touchX;dialog.addEventListener('touchstart',e=>{touchX=e.touches.length===1?e.touches[0].clientX:undefined},{passive:true});dialog.addEventListener('touchend',e=>{if(touchX!==undefined){const delta=e.changedTouches[0].clientX-touchX;if(Math.abs(delta)>70)show(current+(delta<0?1:-1));touchX=undefined}},{passive:true});})();
 </script></html>
+
