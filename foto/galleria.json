@@ -54,8 +54,19 @@
       "thumbnail" : "foto\/immagini\/281bcb02-ef45-4378-9c82-053743777fb6\/fe77513180c6792ebc4047bf2b5f5fb707095cab444fea7ed18ce7f24bbd7f7b-mini.jpg",
       "title" : "Silenzio",
       "width" : 1078
+    },
+    {
+      "alt" : "Firenze - Ponte Vecchio",
+      "caption" : "",
+      "height" : 1707,
+      "id" : "A783C1B5-989E-4F91-AE91-B7E14741782C",
+      "image" : "foto\/immagini\/a783c1b5-989e-4f91-ae91-b7e14741782c\/60419102eb02af27490e9f87b5fd292e90b141e851b460505068ac9e48183a9c.jpg",
+      "revision" : "2A24C640-E527-48EC-BEE7-0923848A501B",
+      "thumbnail" : "foto\/immagini\/a783c1b5-989e-4f91-ae91-b7e14741782c\/d023e4b3a4f7a2c2f4d018ae30fcbc9e40159976f36584862936c04a3d2760c2-mini.jpg",
+      "title" : "Firenze",
+      "width" : 2048
     }
   ],
-  "revision" : "9EF6D1AC-B076-4160-A780-8F461159EE5D",
+  "revision" : "69E23EA0-F648-41EA-9A26-A24B30F8547A",
   "version" : 1
 }
