@@ -43,6 +43,17 @@
       "summary" : "PREMESSA Le esenzioni consentono al cittadino di ottenere l’esonero totale o parziale dal pagamento dei ticket, cioè gli importi che vengono richiesti dal Servizio Sanitario Nazion",
       "title" : "L’esenzione",
       "updated" : "2026-11-22T18:47:39Z"
+    },
+    {
+      "category" : "serie",
+      "fingerprint" : "1908f472be75d0687a75d7a04b2c07e386a0d6735be674801f6881a880df9bba",
+      "id" : "5D4A844D-3553-4443-8358-8BE0C3515FDA",
+      "published" : "2026-11-23T10:12:32Z",
+      "revision" : "AAAB6DC4-A050-4B3E-A094-AA8408C22C49",
+      "slug" : "i-vaccini-a-mrna-5d4a844d",
+      "summary" : "Durante la pandemia di COVID-19 abbiamo sentito parlare moltissimo dei vaccini a RNA messaggero, meglio conosciuti come vaccini a mRNA. Per molti si è trattato del primo incontro c",
+      "title" : "I vaccini a mRNA",
+      "updated" : "2026-11-23T10:12:32Z"
     }
   ],
   "version" : 1
