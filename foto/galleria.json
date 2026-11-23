@@ -32,8 +32,19 @@
       "thumbnail" : "foto\/immagini\/f3026de3-c6af-4fd2-8f5c-e25af0253e2d\/9351fa3f1345d13cca5b00548c7e2dbb28ff4c98d1b6e411110b0fae3cb173d0-mini.jpg",
       "title" : "Autunno",
       "width" : 2400
+    },
+    {
+      "alt" : "In viaggio per Santiago",
+      "caption" : "",
+      "height" : 1800,
+      "id" : "0CABE0AD-46F1-443C-807B-B14907A19168",
+      "image" : "foto\/immagini\/0cabe0ad-46f1-443c-807b-b14907a19168\/b6f1b4202fac4a959979dbed055a84a11154eb8e004c7bbe7e49ca9a7d684eff.jpg",
+      "revision" : "7FD358DC-A772-435E-8295-EB9BB0579545",
+      "thumbnail" : "foto\/immagini\/0cabe0ad-46f1-443c-807b-b14907a19168\/199faa6408d02bdedb2f9b4f0cb05b910ed5c27905663d2efcfa10ea8e1fe6d0-mini.jpg",
+      "title" : "Viaggio",
+      "width" : 2400
     }
   ],
-  "revision" : "B4B3F717-7154-482B-BDB8-A774B367ADFE",
+  "revision" : "A72754B6-E84C-4441-8F21-8377B44FAA90",
   "version" : 1
 }
